@@ -6,8 +6,9 @@
 package methodoverride
 
 import (
-	"github.com/go-rs/rest-api-framework"
 	"strings"
+
+	"github.com/go-rs/rest-api-framework"
 )
 
 var (
@@ -20,7 +21,9 @@ var (
  */
 func isValidMethod(method string) bool {
 	for _, v := range methods {
-		return v == method
+		if v == method {
+			return true
+		}
 	}
 	return false
 }
