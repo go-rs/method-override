@@ -1,5 +1,5 @@
 /*!
- * rest-api-framework
+ * go-rs/method-override
  * Copyright(c) 2019 Roshan Gade
  * MIT Licensed
  */
