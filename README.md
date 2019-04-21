@@ -8,6 +8,6 @@
 ```
 var api rest.API
 
-api.Use(methodoverride.MethodOverride())
+api.Use(methodoverride.Load())
 
 ```

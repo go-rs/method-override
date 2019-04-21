@@ -31,11 +31,11 @@ func isValidMethod(method string) bool {
 /**
  * Method Override
  */
-func MethodOverride() rest.Handler {
+func Load() rest.Handler {
 	return func(ctx *rest.Context) {
 		method := strings.ToUpper(ctx.Request.Header.Get(header))
 		if method != "" && isValidMethod(method) {
-			ctx.Set("original_method", ctx.Request.Method)
+			ctx.Set("OriginalMethod", ctx.Request.Method)
 			ctx.Request.Method = method
 		}
 	}
