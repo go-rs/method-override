@@ -1,0 +1,4 @@
+github.com/go-rs/ordered-json v0.0.1-beta.1 h1:tPA28YyAAGvC1gBO389gHRstlTM9OWE8gWtx59t8eUs=
+github.com/go-rs/ordered-json v0.0.1-beta.1/go.mod h1:I5cgAczuYW6EspjkAvcGmSguaiDXGWlBpGL1v+gasYU=
+github.com/go-rs/rest-api-framework v0.0.1-beta.4 h1:xFb0Dkc0J8mOZvl7mpoDNGmh+yL0nZB5ykyuuIQSofQ=
+github.com/go-rs/rest-api-framework v0.0.1-beta.4/go.mod h1:QntTBI/q2yArw4Ej5zBHJpNocbWj5V5Xy3dRGGhd4I8=
