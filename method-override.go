@@ -7,11 +7,13 @@ package methodoverride
 
 import (
 	"encoding/json"
+	"errors"
 	"net/url"
 	"reflect"
 	"strings"
 
-	rest "github.com/go-rs/rest-api-framework"
+	"github.com/go-rs/ordered-json"
+	"github.com/go-rs/rest-api-framework"
 )
 
 var (
@@ -78,7 +80,18 @@ func Load() rest.Handler {
 				contentType := strings.ToLower(ctx.Request.Header.Get("content-type"))
 
 				if contentType == "application/json" {
-					ctx.Query = mergeQuery(ctx.Query, ctx.Body)
+					if ctx.Body != nil && reflect.TypeOf(ctx.Body).String() == "*orderedjson.OrderedMap" {
+						body := ctx.Body.(*orderedjson.OrderedMap)
+						ctx.Query = mergeQuery(ctx.Query, body.GetMap())
+					} else {
+						var body map[string]interface{}
+						err := json.NewDecoder(ctx.Request.Body).Decode(&body)
+						if err != nil {
+							ctx.Status(400).Throw(errors.New("MALFORMED_BODY"))
+							return
+						}
+						ctx.Query = mergeQuery(ctx.Query, body)
+					}
 				} else if len(ctx.Request.Form) > 0 {
 					ctx.Query = ctx.Request.Form
 				}
