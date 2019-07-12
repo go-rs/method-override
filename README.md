@@ -6,7 +6,7 @@
 <b>Methods:</b> GET, POST, PUT, DELETE, OPTIONS, HEAD, PATCH
 
 ```
-var api rest.API
+var api = rest.New("/")
 
 api.Use(methodoverride.Load())
 
